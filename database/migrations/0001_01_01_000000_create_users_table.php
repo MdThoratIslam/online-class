@@ -8,6 +8,21 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * $user = User::create([
+     * 'name'              => $uData['name'],
+     * 'email'             => $uData['email'],
+     * 'phone'             => $uData['phone'],
+     * 'email_verified_at' => $uData['email_verified_at'],
+     * 'password'          => bcrypt($uData['password']),
+     * 'remember_token'    => $uData['remember_token'],
+     * //'role'              => $uData['role'],
+     * 'type'              => $uData['type'],
+     * 'status_active'     => 1,
+     * 'is_delete'         => 0,
+     * 'created_at'        => now(),
+     * 'updated_at'        => null,
+     * ]);
      */
     public function up(): void
     {
@@ -15,8 +30,22 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('country_id')->nullable();
+            $table->string('division_id')->nullable();
+            $table->string('district_id')->nullable();
+            $table->string('police_station_id')->nullable();
+            $table->string('post_office_id')->nullable();
+            $table->string('post_code')->nullable();
+            $table->string('address')->nullable();
+            $table->string('type');
+            $table->boolean('password_verified')->default(false);
+            $table->boolean('status_active')->default(true);
+            $table->boolean('is_delete')->default(false);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
