@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'ই-লার্নিং::') }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
     <link rel="icon" href="{{asset('backend/assets/img/kaiadmin/favicon.ico')}}" type="image/x-icon"/>
@@ -47,7 +47,7 @@
         }
     </style>
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+{{--    @vite(['resources/sass/app.scss', 'resources/js/app.js'])--}}
 </head>
 <body>
 <div class="wrapper">
@@ -62,9 +62,7 @@
                 <nav class="pull-left">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="http://www.themekita.com">
-                                ThemeKita
-                            </a>
+                            <a class="nav-link" href="http://www.themekita.com">ThemeKita</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"> Help </a>
@@ -93,183 +91,51 @@
                 <div class="switch-block">
                     <h4>Logo Header</h4>
                     <div class="btnSwitch">
-                        <button
-                                type="button"
-                                class="selected changeLogoHeaderColor"
-                                data-color="dark"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="blue"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="purple"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="light-blue"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="green"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="orange"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="red"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="white"
-                        ></button>
+                        <button type="button" class="selected changeLogoHeaderColor" data-color="dark"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="blue"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="green"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="red"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="white"></button>
                         <br />
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="dark2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="blue2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="purple2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="light-blue2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="green2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="orange2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeLogoHeaderColor"
-                                data-color="red2"
-                        ></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
+                        <button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
                     </div>
                 </div>
                 <div class="switch-block">
                     <h4>Navbar Header</h4>
                     <div class="btnSwitch">
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="dark"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="blue"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="purple"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="light-blue"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="green"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="orange"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="red"
-                        ></button>
-                        <button
-                                type="button"
-                                class="selected changeTopBarColor"
-                                data-color="white"
-                        ></button>
+                        <button type="button" class="changeTopBarColor" data-color="dark"></button>
+                        <button type="button" class="changeTopBarColor" data-color="blue"></button>
+                        <button type="button" class="changeTopBarColor" data-color="purple"></button>
+                        <button type="button" class="changeTopBarColor" data-color="light-blue"></button>
+                        <button type="button" class="changeTopBarColor" data-color="green"></button>
+                        <button type="button" class="changeTopBarColor" data-color="orange"></button>
+                        <button type="button" class="changeTopBarColor" data-color="red"></button>
+                        <button type="button" class="selected changeTopBarColor" data-color="white"></button>
                         <br />
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="dark2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="blue2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="purple2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="light-blue2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="green2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="orange2"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeTopBarColor"
-                                data-color="red2"
-                        ></button>
+                        <button type="button" class="changeTopBarColor" data-color="dark2"></button>
+                        <button type="button" class="changeTopBarColor" data-color="blue2"></button>
+                        <button type="button" class="changeTopBarColor" data-color="purple2"></button>
+                        <button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
+                        <button type="button" class="changeTopBarColor" data-color="green2"></button>
+                        <button type="button" class="changeTopBarColor" data-color="orange2"></button>
+                        <button type="button" class="changeTopBarColor" data-color="red2"></button>
                     </div>
                 </div>
                 <div class="switch-block">
                     <h4>Sidebar</h4>
                     <div class="btnSwitch">
-                        <button
-                                type="button"
-                                class="changeSideBarColor"
-                                data-color="white"
-                        ></button>
-                        <button
-                                type="button"
-                                class="selected changeSideBarColor"
-                                data-color="dark"
-                        ></button>
-                        <button
-                                type="button"
-                                class="changeSideBarColor"
-                                data-color="dark2"
-                        ></button>
+                        <button type="button" class="changeSideBarColor" data-color="white"></button>
+                        <button type="button" class="selected changeSideBarColor" data-color="dark"></button>
+                        <button type="button" class="changeSideBarColor" data-color="dark2"></button>
                     </div>
                 </div>
             </div>

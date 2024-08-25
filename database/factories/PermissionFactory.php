@@ -67,54 +67,36 @@ class PermissionFactory extends Factory
                 'guard_name'   => 'web'
             ],
             // ================================================================================================
-            // =================================== Order Permission ===========================================
+            // =================================== User Address Permission ====================================
             [
-                'name'         => 'order-create',
+                'name'         => 'user_adress.create',
                 'guard_name'   => 'web'
             ],
             [
-                'name'         => 'order-edit',
+                'name'         => 'user_adress.edit',
                 'guard_name'   => 'web'
             ],
             [
-                'name'         => 'order-delete',
+                'name'         => 'user_adress.delete',
                 'guard_name'   => 'web'
             ],
             [
-                'name'         => 'order-view',
+                'name'         => 'user_adress.view',
                 'guard_name'   => 'web'
             ],
             [
-                'name'         => 'order-list',
-                'guard_name'   => 'web'
-            ],
-            // ================================================================================================
-            // =================================== Rating Permission ===========================================
-            [
-                'name'         => 'rating-create',
+                'name'         => 'user_adress.index',
                 'guard_name'   => 'web'
             ],
             [
-                'name'         => 'rating-edit',
+                'name'         => 'user_adress.restore',
                 'guard_name'   => 'web'
             ],
             [
-                'name'         => 'rating-delete',
-                'guard_name'   => 'web'
-            ],
-            [
-                'name'         => 'rating-view',
-                'guard_name'   => 'web'
-            ],
-            [
-                'name'         => 'rating-list',
+                'name'         => 'user_adress.forceDelete',
                 'guard_name'   => 'web'
             ],
             // ================================================================================================
-            [
-                'name'         => 'assigned-pickupman',
-                'guard_name'   => 'web'
-            ]
         ];
     }
 }
