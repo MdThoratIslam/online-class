@@ -21,4 +21,11 @@
     <link href="{{asset('frontend/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet" />
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" />
+    <style>
+        .vl {
+            border-left: 1px solid green;
+            height: 580px;
+        }
+    </style>
 </head>
+<body>

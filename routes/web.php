@@ -5,7 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', function () {return view('frontend.welcome');});
+Route::get('/', function () {
+    return view('frontend.pages.home.index');
+})->name('/');
 
 Auth::routes();
 Route::get('/home', [
