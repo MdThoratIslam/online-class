@@ -6,21 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('zone_id')->constrained('zones');
-            $table->string('name')->unique()->collation('utf8mb4_unicode_ci');
-            $table->string('slug')->unique()->collation('utf8mb4_unicode_ci');
-            $table->string('bn_name')->collation('utf8mb4_unicode_ci');
-            $table->string('code')->collation('utf8mb4_unicode_ci');
-            $table->string('description')->nullable()->collation('utf8mb4_unicode_ci');
-            $table->tinyInteger('status_active')->default(1);
-            $table->tinyInteger('is_delete')->default(0);
+            $table->string('name');
+            $table->string('slug');
+            $table->string('bn_name');
+            $table->string('code');
+            $table->string('description');
+            $table->boolean('status_active')->default(1);
+            $table->boolean('is_delete')->default(0);
             $table->timestamps();
         });
     }

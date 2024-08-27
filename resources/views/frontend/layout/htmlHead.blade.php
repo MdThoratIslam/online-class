@@ -27,6 +27,6 @@
             height: 580px;
         }
     </style>
-    @livewireStyles
+    
 </head>
 <body>

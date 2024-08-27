@@ -8,18 +8,20 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
      */
     public function up(): void
     {
         Schema::create('divisions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('zone_id')->constrained('zones');
-            $table->foreignId('country_id')->constrained('countries');
-            $table->string('name')->collation('utf8mb4_unicode_ci');
-            $table->string('bn_name')->collation('utf8mb4_unicode_ci');
-            $table->string('slug')->unique()->collation('utf8mb4_unicode_ci');
-            $table->integer('status_active')->default(1);
-            $table->integer('is_delete')->default(0);
+            $table->string('name');
+            $table->string('bn_name');
+            $table->string('url')->nullable();
+            $table->string('code')->nullable();
+            $table->decimal('lat', 10, 8);
+            $table->decimal('long', 11, 8);
+            $table->tinyInteger('status_active')->default(1);
+            $table->tinyInteger('is_delete')->default(0);
             $table->timestamps();
         });
     }
