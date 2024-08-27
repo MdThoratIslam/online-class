@@ -152,7 +152,7 @@
                                 'desc'  =>  'প্রোগ্রামিং ভাষা: PHP, Python, Ruby, বা JavaScript (Node.js) এর মতো ব্যাকএন্ড ভাষা শিখুন। ফ্রেমওয়ার্ক: দ্রুত বিকাশের জন্য Laravel (PHP), Django (Python), Ruby on Rails বা Express (Node.js) এর মতো ওয়েব ফ্রেমওয়ার্ক ব্যবহার করুন। ডাটাবেস ম্যানেজমেন্ট: রিলেশনাল ডাটাবেস (MySQL, PostgreSQL) এবং NoSQL ডাটাবেস (MongoDB) বুঝুন। APIs: RESTful API এবং GraphQL কীভাবে তৈরি এবং ব্যবহার করবেন তা শিখুন।'
                             ],
                             [
-                                'title' => 'বফুল-স্ট্যাক ডেভেলপমেন্ট',
+                                'title' => 'ফুল-স্ট্যাক ডেভেলপমেন্ট',
                                 'desc'  =>  'ইন্টিগ্রেশন: ফ্রন্টএন্ড এবং ব্যাকএন্ড উপাদানগুলিকে কীভাবে সংযুক্ত করতে হয় তা জানুন। প্রমাণীকরণ এবং অনুমোদন: ব্যবহারকারীর প্রমাণীকরণ (যেমন, OAuth, JWT) এবং ভূমিকা-ভিত্তিক অ্যাক্সেস নিয়ন্ত্রণ প্রয়োগ করুন। নিরাপত্তা: ডেটা এনক্রিপশন, ইনপুট যাচাইকরণ এবং API শেষ পয়েন্ট সুরক্ষিত করার মতো সাধারণ নিরাপত্তা অনুশীলন সম্পর্কে জানুন।'
                             ],
                             [
@@ -169,167 +169,43 @@
                                 'desc'  =>  'সমস্যা-সমাধান: পদ্ধতিগতভাবে জটিল সমস্যাগুলির কাছে যাওয়ার এবং সমাধান করার ক্ষমতা বিকাশ করুন। সহযোগিতা: GitHub, Jira, বা Trello এর মতো টুল ব্যবহার করে একটি দলে কার্যকরভাবে কাজ করতে শিখুন। যোগাযোগ: অন্যান্য বিকাশকারী বা স্টেকহোল্ডারদের সাথে স্পষ্টভাবে প্রযুক্তিগত ধারণাগুলি যোগাযোগ করতে সক্ষম হন।'
                             ],
                         ];
-
-                        $totalItems = count($listItems);
-                        $i=1;
-                        foreach ($listItems as $index => $item)
-                        {
-                            if ($index % 4 == 0)
-                            {
-                                if ($index != 0)
-                                {
-                                    echo '</ul></div>'; // Close previous column
-                                }
-                                echo '<div class="col-md-6 vl">
-                                <ul class="list-inline m-0">'; // Start new column
-                            }
-                            echo '<li class="py-2 border-top border-bottom">';
-                            echo $i .'&nbsp;<i class="fa fa-check text-primary mr-3"></i><strong>' . $item['title'] .
-                                '</strong>: ' . $item['desc'];
-                            echo '</li>';
-                            $i++;
-                        }
-                        // Close the last column
-                        if ($totalItems % 4 != 0) {
-                            echo '</ul></div>';
-                        }
+                        
                         ?>
-                    </div>
+                        @php
+                            $totalItems = count($listItems);
+                            $i = 1;
+                        @endphp
+                        
+                        @foreach ($listItems as $index => $item)
+                            @if ($index % 4 == 0)
+                                @if ($index != 0)
+                                    </ul></div> {{-- Close previous column --}}
+                    @endif
+                    <div class="col-md-6 vl">
+                        <ul class="list-inline m-0"> {{-- Start new column --}}
+                            @endif
+                            <li class="py-2 border-top border-bottom text-justify">
+                                {{ $i }}&nbsp;<i class="fa fa-check text-primary mr-3"></i>
+                                <strong>{{ $item['title'] }}</strong>: {{ $item['desc'] }}
+                            </li>
+                            @php $i++; @endphp
+                            @endforeach
+                            
+                            {{-- Close the last column --}}
+                            @if ($totalItems % 4 != 0)
+                        </ul></div>
+                    @endif
+                
+                
+                
+                </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
     <!-- Class Start -->
-    <div class="container-fluid pt-5">
-        <div class="container">
-            <div class="text-center pb-2">
-                <p class="section-title px-5">
-                    <span class="px-2">Popular Classes</span>
-                </p>
-                <h1 class="mb-4">Classes for Your Kids</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 mb-5">
-                    <div class="card border-0 bg-light shadow-sm pb-2">
-                        <img class="card-img-top mb-2" src="img/class-1.jpg" alt="" />
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Drawing Class</h4>
-                            <p class="card-text">
-                                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
-                                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
-                            </p>
-                        </div>
-                        <div class="card-footer bg-transparent py-4 px-5">
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Age of Kids</strong>
-                                </div>
-                                <div class="col-6 py-1">3 - 6 Years</div>
-                            </div>
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Total Seats</strong>
-                                </div>
-                                <div class="col-6 py-1">40 Seats</div>
-                            </div>
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Class Time</strong>
-                                </div>
-                                <div class="col-6 py-1">08:00 - 10:00</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Tution Fee</strong>
-                                </div>
-                                <div class="col-6 py-1">$290 / Month</div>
-                            </div>
-                        </div>
-                        <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="card border-0 bg-light shadow-sm pb-2">
-                        <img class="card-img-top mb-2" src="img/class-2.jpg" alt="" />
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Language Learning</h4>
-                            <p class="card-text">
-                                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
-                                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
-                            </p>
-                        </div>
-                        <div class="card-footer bg-transparent py-4 px-5">
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Age of Kids</strong>
-                                </div>
-                                <div class="col-6 py-1">3 - 6 Years</div>
-                            </div>
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Total Seats</strong>
-                                </div>
-                                <div class="col-6 py-1">40 Seats</div>
-                            </div>
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Class Time</strong>
-                                </div>
-                                <div class="col-6 py-1">08:00 - 10:00</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Tution Fee</strong>
-                                </div>
-                                <div class="col-6 py-1">$290 / Month</div>
-                            </div>
-                        </div>
-                        <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="card border-0 bg-light shadow-sm pb-2">
-                        <img class="card-img-top mb-2" src="img/class-3.jpg" alt="" />
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Basic Science</h4>
-                            <p class="card-text">
-                                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
-                                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
-                            </p>
-                        </div>
-                        <div class="card-footer bg-transparent py-4 px-5">
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Age of Kids</strong>
-                                </div>
-                                <div class="col-6 py-1">3 - 6 Years</div>
-                            </div>
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Total Seats</strong>
-                                </div>
-                                <div class="col-6 py-1">40 Seats</div>
-                            </div>
-                            <div class="row border-bottom">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Class Time</strong>
-                                </div>
-                                <div class="col-6 py-1">08:00 - 10:00</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 py-1 text-right border-right">
-                                    <strong>Tution Fee</strong>
-                                </div>
-                                <div class="col-6 py-1">$290 / Month</div>
-                            </div>
-                        </div>
-                        <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <livewire:frontend.pages.components.about-section />
     <!-- Class End -->
     <!-- Registration Start -->
     <div class="container-fluid py-5">
@@ -423,128 +299,49 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div
-                            class="position-relative overflow-hidden mb-4"
-                            style="border-radius: 100%"
-                    >
-                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" />
-                        <div
-                                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-                        >
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-twitter"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-facebook-f"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-linkedin-in"></i
-                                ></a>
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+                        <img class="img-fluid w-100" src="{{asset('frontend/img/team-1.jpg')}}" alt="" />
+                        <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px"
+                               href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <h4>Julia Smith</h4>
                     <i>Music Teacher</i>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div
-                            class="position-relative overflow-hidden mb-4"
-                            style="border-radius: 100%"
-                    >
-                        <img class="img-fluid w-100" src="img/team-2.jpg" alt="" />
-                        <div
-                                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-                        >
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-twitter"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-facebook-f"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-linkedin-in"></i
-                                ></a>
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+                        <img class="img-fluid w-100" src="{{asset('frontend/img/team-2.jpg')}}" alt="" />
+                        <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <h4>Jhon Doe</h4>
                     <i>Language Teacher</i>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div
-                            class="position-relative overflow-hidden mb-4"
-                            style="border-radius: 100%"
-                    >
-                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="" />
-                        <div
-                                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-                        >
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-twitter"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-facebook-f"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-linkedin-in"></i
-                                ></a>
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+                        <img class="img-fluid w-100" src="{{asset('frontend/img/team-3.jpg')}}" alt="" />
+                        <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <h4>Mollie Ross</h4>
                     <i>Dance Teacher</i>
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div
-                            class="position-relative overflow-hidden mb-4"
-                            style="border-radius: 100%"
-                    >
-                        <img class="img-fluid w-100" src="img/team-4.jpg" alt="" />
-                        <div
-                                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-                        >
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-twitter"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center mr-2 px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-facebook-f"></i
-                                ></a>
-                            <a
-                                    class="btn btn-outline-light text-center px-0"
-                                    style="width: 38px; height: 38px"
-                                    href="#"
-                            ><i class="fab fa-linkedin-in"></i
-                                ></a>
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+                        <img class="img-fluid w-100" src="{{asset('frontend/img/team-4.jpg')}}" alt="" />
+                        <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <h4>Donald John</h4>
@@ -645,98 +442,98 @@
     </div>
     <!-- Testimonial End -->
     <!-- Blog Start -->
-    <div class="container-fluid pt-5">
-        <div class="container">
-            <div class="text-center pb-2">
-                <p class="section-title px-5">
-                    <span class="px-2">Latest Blog</span>
-                </p>
-                <h1 class="mb-4">Latest Articles From Blog</h1>
-            </div>
-            <div class="row pb-3">
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="" />
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Diam amet eos at no eos</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"
-                                ><i class="fa fa-user text-primary"></i> Admin</small
-                                >
-                                <small class="mr-3"
-                                ><i class="fa fa-folder text-primary"></i> Web Design</small
-                                >
-                                <small class="mr-3"
-                                ><i class="fa fa-comments text-primary"></i> 15</small
-                                >
-                            </div>
-                            <p>
-                                Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                                eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                                lorem. Tempor ipsum justo amet stet...
-                            </p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                            >Read More</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="" />
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Diam amet eos at no eos</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"
-                                ><i class="fa fa-user text-primary"></i> Admin</small
-                                >
-                                <small class="mr-3"
-                                ><i class="fa fa-folder text-primary"></i> Web Design</small
-                                >
-                                <small class="mr-3"
-                                ><i class="fa fa-comments text-primary"></i> 15</small
-                                >
-                            </div>
-                            <p>
-                                Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                                eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                                lorem. Tempor ipsum justo amet stet...
-                            </p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                            >Read More</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="" />
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Diam amet eos at no eos</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"
-                                ><i class="fa fa-user text-primary"></i> Admin</small
-                                >
-                                <small class="mr-3"
-                                ><i class="fa fa-folder text-primary"></i> Web Design</small
-                                >
-                                <small class="mr-3"
-                                ><i class="fa fa-comments text-primary"></i> 15</small
-                                >
-                            </div>
-                            <p>
-                                Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                                eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                                lorem. Tempor ipsum justo amet stet...
-                            </p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                            >Read More</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="container-fluid pt-5">--}}
+{{--        <div class="container">--}}
+{{--            <div class="text-center pb-2">--}}
+{{--                <p class="section-title px-5">--}}
+{{--                    <span class="px-2">Latest Blog</span>--}}
+{{--                </p>--}}
+{{--                <h1 class="mb-4">Latest Articles From Blog</h1>--}}
+{{--            </div>--}}
+{{--            <div class="row pb-3">--}}
+{{--                <div class="col-lg-4 mb-4">--}}
+{{--                    <div class="card border-0 shadow-sm mb-2">--}}
+{{--                        <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="" />--}}
+{{--                        <div class="card-body bg-light text-center p-4">--}}
+{{--                            <h4 class="">Diam amet eos at no eos</h4>--}}
+{{--                            <div class="d-flex justify-content-center mb-3">--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-user text-primary"></i> Admin</small--}}
+{{--                                >--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-folder text-primary"></i> Web Design</small--}}
+{{--                                >--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-comments text-primary"></i> 15</small--}}
+{{--                                >--}}
+{{--                            </div>--}}
+{{--                            <p>--}}
+{{--                                Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam--}}
+{{--                                eirmod, duo et sed sit eirmod kasd clita tempor dolor stet--}}
+{{--                                lorem. Tempor ipsum justo amet stet...--}}
+{{--                            </p>--}}
+{{--                            <a href="" class="btn btn-primary px-4 mx-auto my-2"--}}
+{{--                            >Read More</a--}}
+{{--                            >--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 mb-4">--}}
+{{--                    <div class="card border-0 shadow-sm mb-2">--}}
+{{--                        <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="" />--}}
+{{--                        <div class="card-body bg-light text-center p-4">--}}
+{{--                            <h4 class="">Diam amet eos at no eos</h4>--}}
+{{--                            <div class="d-flex justify-content-center mb-3">--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-user text-primary"></i> Admin</small--}}
+{{--                                >--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-folder text-primary"></i> Web Design</small--}}
+{{--                                >--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-comments text-primary"></i> 15</small--}}
+{{--                                >--}}
+{{--                            </div>--}}
+{{--                            <p>--}}
+{{--                                Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam--}}
+{{--                                eirmod, duo et sed sit eirmod kasd clita tempor dolor stet--}}
+{{--                                lorem. Tempor ipsum justo amet stet...--}}
+{{--                            </p>--}}
+{{--                            <a href="" class="btn btn-primary px-4 mx-auto my-2"--}}
+{{--                            >Read More</a--}}
+{{--                            >--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 mb-4">--}}
+{{--                    <div class="card border-0 shadow-sm mb-2">--}}
+{{--                        <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="" />--}}
+{{--                        <div class="card-body bg-light text-center p-4">--}}
+{{--                            <h4 class="">Diam amet eos at no eos</h4>--}}
+{{--                            <div class="d-flex justify-content-center mb-3">--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-user text-primary"></i> Admin</small--}}
+{{--                                >--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-folder text-primary"></i> Web Design</small--}}
+{{--                                >--}}
+{{--                                <small class="mr-3"--}}
+{{--                                ><i class="fa fa-comments text-primary"></i> 15</small--}}
+{{--                                >--}}
+{{--                            </div>--}}
+{{--                            <p>--}}
+{{--                                Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam--}}
+{{--                                eirmod, duo et sed sit eirmod kasd clita tempor dolor stet--}}
+{{--                                lorem. Tempor ipsum justo amet stet...--}}
+{{--                            </p>--}}
+{{--                            <a href="" class="btn btn-primary px-4 mx-auto my-2"--}}
+{{--                            >Read More</a--}}
+{{--                            >--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- Blog End -->
 @endsection
