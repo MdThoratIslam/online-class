@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(PermissionSeeder::class);
+        $this->call(ZoneSeeder::class);
+        $this->call(CountrySeeder::class);
+
 
         //============== Users Factory use and create user with role and permission =====================================
         $usersData = (new UserFactory())->definition();
