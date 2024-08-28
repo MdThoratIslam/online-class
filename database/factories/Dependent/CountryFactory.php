@@ -14,9 +14,6 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         $array = array(
-            //array("id"=>"`id`", "zone_id"=>"`zone_id`", "name"=>"`name`", "slug"=>"`slug`", "bn_name"=>"`bn_name`",
-            // "code"=>"`code`", "description"=>"`description`", "status_active"=>"`status_active`", "is_delete"=>"`is_delete`", "created_at"=>"`created_at`", "updated_at"=>"`updated_at`"),
-
             array("id"=>"1", "zone_id"=>"2", "name"=>"Afghanistan", "slug"=>"afghanistan", "bn_name"=>"আফগানিস্তান", "code"=>"AF", "description"=>"Afghanistan", "status_active"=>"1", "is_delete"=>"0", "created_at"=>Carbon::now()->timezone('Asia/Dhaka')->format('Y-m-d H:i:s'), "updated_at"=>null),
             array("id"=>"2", "zone_id"=>"4", "name"=>"Albania", "slug"=>"albania", "bn_name"=>"আলবেনিয়া", "code"=>"AL", "description"=>"Albania", "status_active"=>"1", "is_delete"=>"0", "created_at"=>Carbon::now()->timezone('Asia/Dhaka')->format('Y-m-d H:i:s'), "updated_at"=>null),
             array("id"=>"3", "zone_id"=>"4", "name"=>"Algeria", "slug"=>"algeria", "bn_name"=>"আলজেরিয়া", "code"=>"DZ", "description"=>"Algeria", "status_active"=>"1", "is_delete"=>"0", "created_at"=>Carbon::now()->timezone('Asia/Dhaka')->format('Y-m-d H:i:s'), "updated_at"=>null),
