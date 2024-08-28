@@ -12,13 +12,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-
-
         $this->call(PermissionSeeder::class);
-        $this->call(ZoneSeeder::class);
-        $this->call(CountrySeeder::class);
-
-
         //============== Users Factory use and create user with role and permission =====================================
         $usersData = (new UserFactory())->definition();
         foreach ($usersData as $uData)
@@ -46,5 +40,11 @@ class DatabaseSeeder extends Seeder
             $user->assignRole($role);
         }
         //======================================== end =================================================================
+        $this->call(ZoneSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(DivisionSeeder::class);
+        $this->call(DistrictSeeder::class);
+        $this->call(PoliceStationSeeder::class);
+        $this->call(PostCodeSeeder::class);
     }
 }
