@@ -8,7 +8,7 @@
     <meta content="Concern of TR Group" name="description" />
     
     <!-- Favicon -->
-    <link href="{{asset('frontend/img/favicon.ico')}}" rel="icon" />
+    <link rel="icon" href="{{asset('backend/assets/img/kaiadmin/favicon.ico')}}" type="image/x-icon"/>
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet"/>

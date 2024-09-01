@@ -3,113 +3,76 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Models\Dependent\Country;
 use App\Models\Dependent\Division;
 use App\Models\Dependent\District;
+use App\Models\Dependent\PoliceStation;
+use App\Models\Dependent\PostCode;
 
+function get_country($id = null)
+{
+    if ($id != null) {
+        $country = Country::where('id', $id)->first();
+        return $country ? $country->name : null;
+    } else {
+        $countries = Country::all();
+        return $countries;
+    }
+}
 function get_division($id = null)
 {
-//    $apiUrl = 'https://ekdak.com/thikana/pocode/divisions';
-//    $apiToken = '1c4dc27192141d9c2e674b52e3bf8ae0d0afc3bd';
-//    $response = Http::withHeaders(['Authorization' => 'Token ' . $apiToken,])->get($apiUrl);
-//    if ($response->successful())
-//    {
-//        $data = $response->json();
-    $divisions = Divisions::select('en_name')->where('id', $id)->get();
-
-    if($id != null)
-        {
-//            $divisions = collect($data['data'])->where('id', $id)->first();
-
-            return $divisions[$id];
-        }else
-        {
-            //return collect($data['data']); // Make sure this is returning a collection of objects
-            return $divisions; // Make sure this is returning a collection of objects
-        }
-//    } else
-//    {
-//        return 'Division not found';
-//    }
+    if ($id != null) {
+        $division = Division::where('id', $id)->first();
+        return $division;
+    } else {
+        $divisions = Division::all();
+        return $divisions;
+    }
 }
 function get_district($id = null, $division_id = null)
 {
-
-//    if($division_id != null)
-//    {
-//        $apiUrl = 'https://ekdak.com/thikana/pocode/districts?v=' . $division_id;
-//    }else {
-//        $apiUrl = 'https://ekdak.com/thikana/pocode/districts';
-//    }
-//    $apiToken ='1c4dc27192141d9c2e674b52e3bf8ae0d0afc3bd';
-//    $response = Http::withHeaders(['Authorization' => 'Token ' . $apiToken,])->get($apiUrl);
-//    if ($response->successful())
-//    {
-//        $data = $response->json();
-    $districts = District::select()
-        if($id != null)
-        {
-            $districts = collect($data['data'])->where('id', $id)->first();
-            return $districts['en_name'];
-        }else
-        {
-            return collect($data['data']); // Make sure this is returning a collection of objects
-        }
-//    } else
-//    {
-//        return 'District not found';
-//    }
+    if ($division_id != null) {
+        $districts = District::where('division_id', $division_id)->get();
+        return $districts;
+    } else if ($id != null) {
+        $district = District::where('id', $id)->first();
+        return $district;
+    } else {
+        $districts = District::all();
+        return $districts;
+    }
 }
 function get_police_station($id = null,$district_id = null)
 {
     if($district_id != null)
     {
-        $apiUrl = 'https://ekdak.com/thikana/pocode/police-stations?d=' . $district_id;
-    }else {
-        $apiUrl = 'https://ekdak.com/thikana/pocode/police-stations';
-    }
-    $apiToken = '1c4dc27192141d9c2e674b52e3bf8ae0d0afc3bd';
-    $response = Http::withHeaders(['Authorization' => 'Token ' . $apiToken,])->get($apiUrl);
-    if ($response->successful())
+        $police_stations = PoliceStation::where('district_id', $district_id)->get();
+        return $police_stations;
+    }else if($id != null)
     {
-        $data = $response->json();
-        if($id != null)
-        {
-            $police_stations = collect($data['data'])->where('id', $id)->first();
-            return $police_stations['en_name'];
-        }else
-        {
-            return collect($data['data']); // Make sure this is returning a collection of objects
-        }
-    } else
+        $police_station = PoliceStation::where('id', $id)->first();
+        return $police_station ? $police_station->name : null;
+    }else
     {
-        return 'Police Station not found';
+        $police_stations = PoliceStation::all();
+        return $police_stations;
     }
 }
-
 function get_post_office($id = null,$police_station_id = null)
 {
     if($police_station_id != null)
     {
-        $apiUrl = 'https://ekdak.com/thikana/pocode/post-offices?t=' . $police_station_id;
-    }else {
-        $apiUrl = 'https://ekdak.com/thikana/pocode/post-offices';
-    }
-    $apiToken = '1c4dc27192141d9c2e674b52e3bf8ae0d0afc3bd';
-    $response = Http::withHeaders(['Authorization' => 'Token ' . $apiToken,])->get($apiUrl);
-    if ($response->successful())
+        $post_offices = PostCode::where('police_station_id', $police_station_id)->get();
+        return $post_offices;
+    }else if($id != null)
     {
-        $data = $response->json();
-        if($id != null)
-        {
-            $post_offices = collect($data['data'])->where('id', $id)->orderBy('en_name')->first();
-            return $post_offices['en_name'];
-        }else
-        {
-            return collect($data['data']); // Make sure this is returning a collection of objects
-        }
-    } else
+        $post_office = PostCode::where('id', $id)->first();
+        return $post_office ? $post_office->name : null;
+    }else
     {
-        return 'Post Office not found';
+        $post_offices = PostCode::all();
+        return $post_offices;
     }
 }
 function get_identification_type($id = null)
@@ -163,7 +126,6 @@ function blood_group($id = null)
         return $blood_group;
     }
 }
-
 function status_active ($id = null)
 {
     $status_active =
@@ -195,13 +157,11 @@ function gender ($id = null)
         return $gender;
     }
 }
-
-
 function currentDateTime()
 {
     return Carbon::now()->timezone('Asia/Dhaka')->format('Y-m-d H:i:s');
 }
- function isActiveSubMenu($subModules) {
+function isActiveSubMenu($subModules) {
     foreach ($subModules as $submenu) {
         if (request()->routeIs($submenu->route)) {
             return true;
@@ -209,7 +169,6 @@ function currentDateTime()
     }
     return false;
 }
-
 function departmentArr ($id = null)
 {
     $departmentArr = [
@@ -225,8 +184,6 @@ function departmentArr ($id = null)
         return $departmentArr;
     }
 }
-
-
 function designationArr($id = null)
 {
     $designationArr = [
@@ -248,8 +205,6 @@ function designationArr($id = null)
         return $designationArr;
     }
 }
-
-
 function relationArr ($id = null)
 {
     $relationArr = [
@@ -263,7 +218,6 @@ function relationArr ($id = null)
         return $relationArr;
     }
 }
-
 function maritalStatusArr ($id = null)
 {
     $maritalStatusArr = [
@@ -280,7 +234,6 @@ function maritalStatusArr ($id = null)
         return $maritalStatusArr;
     }
 }
-
 function religionArr ($id = null)
 {
     $religionArr = [
@@ -344,7 +297,6 @@ function religionArr ($id = null)
         return $religionArr;
     }
 }
-
 function nationalityArr ($id = null)
 {
     $nationalityArr = [
@@ -384,53 +336,6 @@ function isDeleteArr($id = null)
         return $isDeleteArr;
     }
 }
-
-
-
- function userTypeArr($id = null)
- {
-     $userTypeArr = [
-         1 => "Admin",
-         2 => "User",
-     ];
-     if($id != null)
-     {
-         return $userTypeArr[$id];
-     }else
-     {
-         return $userTypeArr;
-     }
- }
- function purpose($id = null)
- {
-     $purpose =[
-         1  =>  'Salary',
-         2  =>  'Loan',
-     ];
-     if ($id != null){
-         return $purpose[$id];
-     }else{
-         return $purpose;
-     }
- }
-
-function routeType($id = null)
-{
-    $routeType = [
-        0  =>  'Section Title',
-        1  =>  'Single Route',
-        2  =>  'Root Route',
-    ];
-
-    // Check if the id is present in the array and return the value
-    // If not, return a default string
-    if ($id !== null && array_key_exists($id, $routeType)) {
-        return $routeType[$id];
-    } else {
-        return 'Unknown Route Type'; // Default value
-    }
-}
-
 if (! function_exists('convert_to_absolute_path')) {
     function convert_to_absolute_path($relativePath) {
         return public_path($relativePath);

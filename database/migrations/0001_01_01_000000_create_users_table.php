@@ -33,13 +33,6 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('country_id')->nullable();
-            $table->string('division_id')->nullable();
-            $table->string('district_id')->nullable();
-            $table->string('police_station_id')->nullable();
-            $table->string('post_office_id')->nullable();
-            $table->string('post_code')->nullable();
-            $table->string('address')->nullable();
             $table->string('type');
             $table->boolean('password_verified')->default(false);
             $table->boolean('status_active')->default(true);
