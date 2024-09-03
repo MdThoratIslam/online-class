@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8" />
-    <title>{{ config('app.name', 'ই-লার্নিং::') }} @yield('title')</title>
+    <title>{{ __('web_page.webTitle')  }} @yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Concern of TR Group" name="keywords" />
     <meta content="Concern of TR Group" name="description" />

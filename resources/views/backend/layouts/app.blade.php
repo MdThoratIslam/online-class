@@ -31,7 +31,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('backend/assets/css/plugins.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/assets/css/kaiadmin.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('backend/assets/css/kaiadmin.css')}}" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{asset('backend/assets/css/demo.css')}}" />
     <style>
@@ -57,31 +57,7 @@
     <div class="main-panel">
         @include('backend.layouts.topbar')
         @yield('content')
-        <footer class="footer fixed-bottom">
-            <div class="container-fluid d-flex justify-content-between">
-                <nav class="pull-left">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://www.themekita.com">ThemeKita</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"> Help </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"> Licenses </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright">
-                    2024, made with <i class="fa fa-heart heart text-danger"></i> by
-                    <a href="http://www.themekita.com">ThemeKita</a>
-                </div>
-                <div>
-                    Distributed by
-                    <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
-                </div>
-            </div>
-        </footer>
+        @include('backend.layouts.footer')
     </div>
     <!-- Custom template | don't include it in your project! -->
     <div class="custom-template">

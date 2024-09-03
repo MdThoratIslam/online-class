@@ -100,50 +100,65 @@ class RegisterController extends Controller
 //    }
     protected function create(array $data)
     {
-        return DB::transaction(function () use ($data)
+        try
         {
-            $name = $data['first_name'] . ' ' . $data['last_name'];
-
-            $user = User::create([
-                'name'          => $name,
-                'email'         => $data['email'],
-                'phone'         => $data['phone'],
-                'type'          => 'student',
-                'password'      => Hash::make($data['password']),
-            ]);
-
-            // Insert present address
-            UserAddress::create([
-                'user_id'           => $user->id,
-                'address'           => $data['present_area'],
-                'country_id'        => $data['present_country'],
-                'division_id'       => $data['division_id'],
-                'district_id'       => $data['district_id'],
-                'police_station_id' => $data['police_station_id'],
-                'post_office_id'    => $data['post_office_id'],
-                'zip_code'          => $data['post_code'],
-                'type'              => 2, // 2 for Present address
-                'created_by'        => $user->id,
-            ]);
-
-            // Insert permanent address if different from present address
-            if (empty($data['same_address']))
+            return DB::transaction(function () use ($data)
             {
+                $name = $data['first_name'] . ' ' . $data['last_name'];
+
+                $user = User::create([
+                    'name'          => $name,
+                    'email'         => $data['email'],
+                    'phone'         => $data['phone'],
+                    'type'          => 3,
+                    'password'      => Hash::make($data['password']),
+                ]);
+                // Assign role to user
+                $user->assignRole('Students');
+
+                // Insert present address
                 UserAddress::create([
                     'user_id'           => $user->id,
-                    'address'           => $data['permanent_area'],
-                    'country_id'        => $data['permanent_country'],
-                    'division_id'       => $data['permanent_division_id'],
-                    'district_id'       => $data['permanent_district_id'],
-                    'police_station_id' => $data['permanent_police_station_id'],
-                    'post_office_id'    => $data['permanent_post_office_id'],
-                    'zip_code'          => $data['permanent_zip_code'],
-                    'type'              => 1, // 1 for Permanent address
+                    'address'           => $data['present_area'],
+                    'country_id'        => $data['present_country'],
+                    'division_id'       => $data['division_id'],
+                    'district_id'       => $data['district_id'],
+                    'police_station_id' => $data['police_station_id'],
+                    'post_office_id'    => $data['post_office_id'],
+                    'zip_code'          => $data['post_code'],
+                    'type'              => 2, // 2 for Present address
+                    // if same address is checked, set same_as_present set to 1
+                    'same_as_present'   => empty($data['same_address']) ? 2 : 1,
                     'created_by'        => $user->id,
                 ]);
-            }
 
-            return $user;
-        });
+                // Insert permanent address if different from present address
+                if (empty($data['same_address']))
+                {
+                    UserAddress::create([
+                        'user_id'           => $user->id,
+                        'address'           => $data['permanent_area'],
+                        'country_id'        => $data['permanent_country'],
+                        'division_id'       => $data['permanent_division_id'],
+                        'district_id'       => $data['permanent_district_id'],
+                        'police_station_id' => $data['permanent_police_station_id'],
+                        'post_office_id'    => $data['permanent_post_office_id'],
+                        'zip_code'          => $data['permanent_zip_code'],
+                        'type'              => 1, // 1 for Permanent address
+                        'same_as_present'   => 2,
+                        'created_by'        => $user->id,
+                    ]);
+                }
+                //need registration success message
+                session()->flash('success', 'Registration successful. Please login to continue.');
+                return $user;
+            });
+
+        }catch (Exception $e)
+        {
+            Log::error('Error creating user: ' . $e->getMessage());
+            session()->flash('error', 'An error occurred during registration. Please try again.');
+            return redirect()->back()->withInput();
+        }
     }
 }

@@ -181,3 +181,12 @@ AWS_USE_PATH_STYLE_ENDPOINT=false
 VITE_APP_NAME="${APP_NAME}"
 
 ```
+Step 5: PHPFlasher’s modular design lets you select and install only the components your project needs.
+like this: [here](https://php-flasher.io/laravel/). 
+```bash
+composer require php-flasher/flasher-laravel
+```
+After installation, you need to run another command to set up the necessary assets for PHPFlasher:
+```bash
+php artisan flasher:install
+```

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('post_office_id')->constrained('post_codes')->onDelete('cascade');
             $table->integer('zip_code');
             $table->tinyInteger('type')->default(1)->comment('1=Permanent, 2=Present, 3=Office');
+            $table->tinyInteger('same_as_present')->nullable()->comment('1=Same as Present Address, 2=Not Same as Present Address');
             $table->tinyInteger('status_active')->default(1)->comment('1=Active, 2=Inactive');
             $table->tinyInteger('is_deleted')->default(1)->comment('1=Not Deleted, 2=Deleted');
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');

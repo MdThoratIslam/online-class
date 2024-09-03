@@ -151,7 +151,8 @@
                             </fieldset>
                             
                             <div class="mb-3 form-check input_field animate__animated animate__bounceInRight">
-                                <input type="checkbox" class="form-check-input" id="same_address" name="same_address" {{ old('same_address') ? 'checked' : '' }}>
+                                <input type="checkbox" class="form-check-input" id="same_address" name="same_address"
+                                {{ old('same_address') ? 'checked' : '' }}>
                                 <label class="form-check-label text-danger" for="same_address">Same as Present Address</label>
                             </div>
                             

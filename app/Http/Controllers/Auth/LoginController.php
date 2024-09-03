@@ -8,6 +8,7 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
     public function __construct()
     {
+        //need to b
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }

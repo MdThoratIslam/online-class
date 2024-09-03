@@ -109,33 +109,33 @@
 
 <script>
     // need email error message to be displayed
-    @if($errors->has('email'))
-    toastr.error("{{$errors->first('email')}}", "Error",
-        {
-        "closeButton": true,
-        "progressBar": true,
-        "timeOut": "5000",
-        "extendedTimeOut": "5000",
-        "positionClass": "toast-top-center",
-        "preventDuplicates": true,
-        "showDuration": "300",
-        "color": "red",
-        "backgroundColor": "red",
-    });
-    @elseif($errors->has('password'))
-    toastr.error("{{$errors->first('password')}}", "Error",
-        {
-        "closeButton": true,
-        "progressBar": true,
-        "timeOut": "5000",
-        "extendedTimeOut": "5000",
-        "positionClass": "toast-top-center",
-        "preventDuplicates": true,
-        "showDuration": "300",
-        "color": "red",
-        "backgroundColor": "red",
-    });
-    @endif
+{{--    @if($errors->has('email'))--}}
+{{--    toastr.error("{{$errors->first('email')}}", "Error",--}}
+{{--        {--}}
+{{--        "closeButton": true,--}}
+{{--        "progressBar": true,--}}
+{{--        "timeOut": "5000",--}}
+{{--        "extendedTimeOut": "5000",--}}
+{{--        "positionClass": "toast-top-center",--}}
+{{--        "preventDuplicates": true,--}}
+{{--        "showDuration": "300",--}}
+{{--        "color": "red",--}}
+{{--        "backgroundColor": "red",--}}
+{{--    });--}}
+{{--    @elseif($errors->has('password'))--}}
+{{--    toastr.error("{{$errors->first('password')}}", "Error",--}}
+{{--        {--}}
+{{--        "closeButton": true,--}}
+{{--        "progressBar": true,--}}
+{{--        "timeOut": "5000",--}}
+{{--        "extendedTimeOut": "5000",--}}
+{{--        "positionClass": "toast-top-center",--}}
+{{--        "preventDuplicates": true,--}}
+{{--        "showDuration": "300",--}}
+{{--        "color": "red",--}}
+{{--        "backgroundColor": "red",--}}
+{{--    });--}}
+{{--    @endif--}}
 </script>
 @yield('authScripts')
 </body>

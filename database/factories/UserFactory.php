@@ -75,11 +75,6 @@ class UserFactory extends Factory
                     'user-delete',
                     'user-view',
                     'user-list',
-                    'role-create',
-                    'role-edit',
-                    'role-delete',
-                    'role-view',
-                    'role-list',
                 ];
                 break;
             default:

@@ -5,10 +5,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LocaleController;
 
 use Illuminate\Http\Request;
 use App\Models\District;
 Route::get('/', function () {return view('frontend.pages.home.index');})->name('/');
+Route::post('/locale', LocaleController::class)->name('locale.change');
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -4,7 +4,7 @@
     <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
         <div class="row align-items-center px-3">
             <div class="col-lg-6 text-center text-lg-left">
-                <h4 class="text-white mb-4 mt-5 mt-lg-0">ই-লার্নিং প্ল্যাটফর্ম</h4>
+                <h4 class="text-white mb-4 mt-5 mt-lg-0">{{ __('web_page.webTitle')  }}</h4>
                 <h4 class="display-4 font-weight-bold text-white bangla-font">
                     প্রফেশনাল ওয়েব অ্যাপ্লিকেশন ডেভেলপমেন্ট
                 </h4>
@@ -133,9 +133,8 @@
                     <p class="section-title pr-5">
                         <span class="pr-2">শেখার বিষয়ে জানুন</span>
                     </p>
-                    <h1 class="mb-4">প্রফেশনাল ওয়েব অ্যাপ্লিকেশন</h1>
-                    <p>প্রফেশনাল ওয়েব অ্যাপ্লিকেশন বিকাশের জন্য প্রযুক্তিগত দক্ষতা, ওয়েব প্রযুক্তি বোঝা এবং ভাল বিকাশ অনুশীলনের সমন্বয় প্রয়োজন। এখানে আপনাকে সাধারণত যা শিখতে হবে।
-                    </p>
+                    <h1 class="mb-4">{{ __('web_page.webApplicationAbout.title') }}</h1>
+                    <p>{{ __('web_page.webApplicationAbout.about') }}</p>
                     <div class="row pt-2 pb-4">
                         <?php
                         $listItems = [

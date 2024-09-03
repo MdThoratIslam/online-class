@@ -336,8 +336,31 @@ function isDeleteArr($id = null)
         return $isDeleteArr;
     }
 }
+//  $table->integer('type')->default(1)->comment('1=Super Admin, 2=Teacher, 3=Student, 4=Parent');
+function userTypeArr($id = null)
+{
+    $userTypeArr = [
+        1 => 'Super Admin',
+        2 => 'Teacher',
+        3 => 'Student',
+        4 => 'Parent',
+    ];
+    if($id != null)
+    {
+        return $userTypeArr[$id];
+    }else
+    {
+        return $userTypeArr;
+    }
+}
 if (! function_exists('convert_to_absolute_path')) {
     function convert_to_absolute_path($relativePath) {
         return public_path($relativePath);
+    }
+}
+if (!function_exists('getAppName')) {
+    function getAppName()
+    {
+        return __('web_page.webTitle');
     }
 }

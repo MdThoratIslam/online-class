@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('type');
+            $table->tinyInteger('type')->default(3)->comment('1=Super Admin, 2=Teacher, 3=Student, 4=Gardian');
             $table->boolean('password_verified')->default(false);
             $table->boolean('status_active')->default(true);
             $table->boolean('is_delete')->default(false);

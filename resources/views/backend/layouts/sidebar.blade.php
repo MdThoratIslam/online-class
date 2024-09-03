@@ -21,67 +21,81 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item {{Request::is('home') ? 'active' : ''}}">
-                    <a href="{{route('home')}}" >
-                        <i class="fas fa-home"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
+                @can('home')
+                    <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
+                        <a href="{{ route('home') }}">
+                            <i class="fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                @endcan
                 
-                <li class="nav-section">
-                <span class="sidebar-mini-icon">
-                  <i class="fa fa-ellipsis-h"></i>
-                </span>
-                    <h4 class="text-section">Role & Permission</h4>
-                </li>
-                <li class="nav-item {{Request::is('roles') ? 'active' : ''}}">
-                    <a data-bs-toggle="collapse" href="#submenu">
-                        <i class="fas fa-bars"></i>
-                        <p>Role & Permission</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="submenu">
-                        <ul class="nav nav-collapse">
-                            <li class="nav-item {{Request::is('roles') ? 'active' : ''}}">
-                                <a data-bs-toggle="collapse" href="#subnav1">
-                                    <span class="sub-item">Role</span>
-                                    <span class="caret"></span>
-                                </a>
-                                <div class="collapse" id="subnav1">
-                                    <ul class="nav nav-collapse subnav">
-                                        <li>
-                                            <a href="{{route('roles.index')}}">
-                                                <span class="sub-item">List</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="sub-item">Create</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="collapse" href="#subnav2">
-                                    <span class="sub-item">Permission</span>
-                                    <span class="caret"></span>
-                                </a>
-                                <div class="collapse" id="subnav2">
-                                    <ul class="nav nav-collapse subnav">
-                                        <li>
-                                            <a href="{{route('permissions')}}">
-                                                <span class="sub-item">List</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @canany(['role-create', 'role-edit', 'role-delete', 'role-view', 'role-list'])
+                    <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                        <h4 class="text-section">Role & Permission</h4>
+                    </li>
+                    <li class="nav-item {{ Request::is('roles') ? 'active' : '' }}">
+                        <a data-bs-toggle="collapse" href="#submenu">
+                            <i class="fas fa-bars"></i>
+                            <p>Role & Permission</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="submenu">
+                            <ul class="nav nav-collapse">
+                                @can('role-list')
+                                    <li class="nav-item {{ Request::is('roles') ? 'active' : '' }}">
+                                        <a data-bs-toggle="collapse" href="#subnav1">
+                                            <span class="sub-item">Role</span>
+                                            <span class="caret"></span>
+                                        </a>
+                                        <div class="collapse" id="subnav1">
+                                            <ul class="nav nav-collapse subnav">
+                                                <li>
+                                                    <a href="{{ route('roles.index') }}">
+                                                        <span class="sub-item">List</span>
+                                                    </a>
+                                                </li>
+                                                @can('role-create')
+                                                    <li>
+                                                        <a href="{{ route('roles.create') }}">
+                                                            <span class="sub-item">Create</span>
+                                                        </a>
+                                                    </li>
+                                                @endcan
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endcan
+                                
+                                @can('permission-list')
+                                    <li>
+                                        <a data-bs-toggle="collapse" href="#subnav2">
+                                            <span class="sub-item">Permission</span>
+                                            <span class="caret"></span>
+                                        </a>
+                                        <div class="collapse" id="subnav2">
+                                            <ul class="nav nav-collapse subnav">
+                                                <li>
+                                                    <a href="{{ route('permissions.index') }}">
+                                                        <span class="sub-item">List</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
                 
+                <!-- Add other sections in a similar manner based on permissions -->
+            
             </ul>
         </div>
     </div>
 </div>
+<!-- End Sidebar -->

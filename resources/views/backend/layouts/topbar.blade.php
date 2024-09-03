@@ -1,4 +1,4 @@
-<div class="main-header">
+<div class="main-header" >
     <div class="main-header-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
@@ -119,7 +119,14 @@
                         </div>
                         <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="fw-bold">
+                        @if(Auth::check())
+                              @php
+                                  $nameParts = explode(' ', Auth::user()->name);
+                                  @endphp
+                              {{ implode(' ', array_slice($nameParts, 0, -1)) }}<br>{{ end($nameParts) }}
+                         @endif
+                    </span>
                     </span>
                     </a>
                     <ul class="dropdown-menu dropdown-user animated fadeIn">
