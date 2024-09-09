@@ -1,4 +1,4 @@
-<footer class="footer fixed-bottom">
+<footer class="footer fixed-bottom sc">
     <div class="container-fluid d-flex justify-content-between">
 {{--        <nav class="pull-left">--}}
 {{--            <ul class="nav">--}}

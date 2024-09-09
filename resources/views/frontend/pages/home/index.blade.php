@@ -194,9 +194,6 @@
                             @if ($totalItems % 4 != 0)
                         </ul></div>
                     @endif
-                
-                
-                
                 </div>
                 </div>
             </div>
