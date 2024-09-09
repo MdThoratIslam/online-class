@@ -29,6 +29,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('web-settings')
+                    <li class="nav-item {{ Request::is('config.index') ? 'active' : '' }}">
+                        <a href="{{ route('config') }}">
+                            <i class="fas fa-users"></i>
+                            <p>Config</p>
+                        </a>
+                    </li>
+                @endcan
                 
                 @canany(['role-create', 'role-edit', 'role-delete', 'role-view', 'role-list'])
                     <li class="nav-section">

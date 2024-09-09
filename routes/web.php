@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\WebPageConfigController;
 
 use Illuminate\Http\Request;
 use App\Models\District;
@@ -20,6 +21,11 @@ Route::group(['middleware' => ['auth']], function()
     //need permission to resource route
     Route::get('permissions', [RoleController::class, 'getPermissions'])->name('permissions');
     Route::resource('users',    UserController::class);
+
+    Route::get('/admin/config', function () {return view('backend.pages.langConfig.index');})->name('config',);
+
+    Route::get('/admin/config/index', [WebPageConfigController::class, 'index'])->name('config.index');
+    Route::post('/admin/config', [WebPageConfigController::class, 'update'])->name('config.update');
 });
 
 Route::post('/get-district', function (Request $request)
